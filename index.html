@@ -3,9 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Leave Me a Birthday Message 🎂</title>
+<title> Kung mahal mo ako mag message ka... 🎂</title>
 
 <style>
+
+    .balloon{
+    position:fixed;
+    bottom:-100px;
+    font-size:50px;
+    animation:floatUp 3s ease-out forwards;
+    z-index:999;
+}
+
+@keyframes floatUp{
+    0%{
+        transform:translateY(0);
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-800px);
+        opacity:0;
+    }
+}
+    
 body{
     margin:0;
     font-family:Georgia, serif;
@@ -98,12 +119,32 @@ Hello!! 24 na ako.. send gcash joke send your sweet messages, kasing sweet neton
 
 <script>
 
+    function createBalloon(){
+
+    const balloon=document.createElement("div");
+
+    balloon.className="balloon";
+    balloon.innerHTML="🎈";
+
+    balloon.style.left=Math.random()*90+"vw";
+
+    document.body.appendChild(balloon);
+
+    setTimeout(()=>{
+        balloon.remove();
+    },3000);
+
+}
+
 async function addMessage(){
 
 const text = document.getElementById("textbox").value.trim();
 
 if(text === ""){
     alert("Please write a message first ❤️");
+for(let i = 0; i < 10; i++){
+    setTimeout(createBalloon, i * 150);
+}
     return;
 }
 
@@ -124,7 +165,7 @@ button.classList.add("sent");
 button.textContent="Sent! 💌";
 
 
-alert("Your message is sent! 🎂");
+alert("N4paDUhLhAA na P0WXz anG iy0nG m3Ns4h3 to my international friends this means your message was sent haha! 🎂");
 
 
 document.getElementById("textbox").value="";
