@@ -82,11 +82,10 @@ button.sent{
 
 <div class="container">
 
-<h1>🎂 Happy Birthday to Me</h1>
+<h1>BIRTHDAY NI AIMS.. 24 NA SHA ????</h1>
 
 <p>
-Leave me a note. It can be long, short, weird, funny,
-or something you've never told me before.
+Hello!! 24 na ako.. send gcash joke send your sweet messages, kasing sweet netong cassava cake na nasa background!
 </p>
 
 <textarea id="textbox" placeholder="Write something..."></textarea>
@@ -99,34 +98,45 @@ or something you've never told me before.
 
 <script>
 
-function addMessage(){
+async function addMessage(){
 
-const text=document.getElementById("textbox").value.trim();
+const text = document.getElementById("textbox").value.trim();
 
-if(text===""){
+if(text === ""){
     alert("Please write a message first ❤️");
     return;
 }
 
-const div=document.createElement("div");
-div.className="message";
-div.textContent=text;
+await fetch("https://script.google.com/macros/s/AKfycbyrL8P1wO6yiy8MkOPcBI-sN8GMr0_JHglCoaTbQ3GDSE4OZrEWT4d5dCZb-6So_LNPwg/exec", {
 
-document.getElementById("messages").prepend(div);
+    method:"POST",
 
-document.getElementById("textbox").value="";
+    body:JSON.stringify({
+        message:text
+    })
 
-const button=document.querySelector("button");
+});
+
+
+const button = document.querySelector("button");
 
 button.classList.add("sent");
 button.textContent="Sent! 💌";
 
+
 alert("Your message is sent! 🎂");
 
-setTimeout(() => {
-    button.classList.remove("sent");
-    button.textContent="Leave Message";
-}, 3000);
+
+document.getElementById("textbox").value="";
+
+
+setTimeout(()=>{
+
+button.classList.remove("sent");
+button.textContent="Leave Message";
+
+},3000);
+
 
 }
 
