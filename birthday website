@@ -85,19 +85,28 @@ or something you've never told me before.
 
 <script>
 
-function addMessage(){
+async function addMessage() {
 
-const text=document.getElementById("textbox").value.trim();
+    const text = document.getElementById("textbox").value.trim();
 
-if(text==="") return;
+    if (text === "") {
+        alert("Please write a message first ❤️");
+        return;
+    }
 
-const div=document.createElement("div");
-div.className="message";
-div.textContent=text;
+    await fetch("https://script.google.com/macros/s/AKfycbyrL8P1wO6yiy8MkOPcBI-sN8GMr0_JHglCoaTbQ3GDSE4OZrEWT4d5dCZb-6So_LNPwg/exec", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            message: text
+        })
+    });
 
-document.getElementById("messages").prepend(div);
+    alert("Thank you for your birthday message! 🎂");
 
-document.getElementById("textbox").value="";
+    document.getElementById("textbox").value = "";
 
 }
 
